@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Management Profile | EspeceSense</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="greeting">
+                <p>Hi, John Doe</p>
+            </div>
+            <div class="profile-pic">
+                <img src="sample-profile-pic.jpg" alt="Profile Picture">
+            </div>
+        </header>
+
+        <main class="content">
+            <nav>
+                <a href="#monthly-budget">Monthly Budget</a>
+                <a href="#tax-management">Tax Management</a>
+                <a href="#money-spent">Money Spent</a>
+            </nav>
+
+            <section class="monthly-budget" id="monthly-budget">
+                <h2>Monthly Budget</h2>
+                <div class="budget-details">
+                    <div class="salary">
+                        <h3>Salary</h3>
+                        <p>Your monthly salary: $5,000</p>
+                    </div>
+                    <div class="budget-distribution">
+                        <h3>Budget Distribution</h3>
+                        <div class="budget-item">
+                            <span>Housing</span>
+                            <span>$1,000</span>
+                        </div>
+                        <div class="budget-item">
+                            <span>Utilities</span>
+                            <span>$300</span>
+                        </div>
+                        <div class="budget-item">
+                            <span>Transportation</span>
+                            <span>$200</span>
+                        </div>
+                        <div class="budget-item">
+                            <span>Groceries</span>
+                            <span>$400</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tax-management" id="tax-management">
+                <h2>Tax Management</h2>
+                <div class="tax-details">
+                    <p><strong>Filing Status:</strong> Married, Filing Jointly</p>
+                    <p><strong>Tax Deductions:</strong> Mortgage Interest, Charitable Contributions</p>
+                    <p><strong>Estimated Tax Liability:</strong> $1,500</p>
+                    <p><strong>Next Tax Filing Date:</strong> April 15, 2024</p>
+                    <p><strong>Documents Uploaded:</strong> W-2 Form, 1099 Forms</p>
+                </div>
+            </section>
+
+            <section class="pie-graph" id="money-spent">
+                <h2>Statistics</h2>
+                <div class="chart-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH-SwGvGpjwY2XnXYD_Q6JfWhZvbXAGg-j1A&usqp=CAU" alt=" graph">
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 EspeceSense.com | All rights reserved</p>
+        </footer>
+    </div>
+    <script>
+        function updateMonthlyBudget(salary, housing, utilities, transportation, groceries) {
+            document.querySelector('.salary p').textContent = `Your monthly salary: $${salary}`;
+            document.querySelector('.budget-item:nth-child(1) span:last-child').textContent = `$${housing}`;
+            document.querySelector('.budget-item:nth-child(2) span:last-child').textContent = `$${utilities}`;
+            document.querySelector('.budget-item:nth-child(3) span:last-child').textContent = `$${transportation}`;
+            document.querySelector('.budget-item:nth-child(4) span:last-child').textContent = `$${groceries}`;
+        }
+        updateMonthlyBudget(500, 100, 30, 20, 400);
+    </script></body>
+</html>
