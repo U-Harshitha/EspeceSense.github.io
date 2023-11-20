@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+background:  linear-gradient(90deg,  #0f68a9 0%,#86f7a4 90%);    }
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-label {
+      color: #0f68a9;
+    }
+    .form-input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #0f68a9;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .form-button {
+      background-color: #0f68a9;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2 class="text-2xl font-semibold mb-4 text-center">Financial Information Form</h2>
+
+  <form>
+    <div class="mb-4">
+      <label class="form-label block text-sm font-medium text-gray-700">Income:</label>
+      <input type="number" class="form-input" placeholder="Enter income" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label block text-sm font-medium text-gray-700">Property Value:</label>
+      <input type="number" class="form-input" placeholder="Enter property value" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label block text-sm font-medium text-gray-700">Total Assets:</label>
+      <input type="number" class="form-input" placeholder="Enter total assets" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label block text-sm font-medium text-gray-700">Salary:</label>
+      <input type="number" class="form-input" placeholder="Enter salary" required>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label block text-sm font-medium text-gray-700">Outstanding Loans:</label>
+      <input type="number" class="form-input" placeholder="Enter outstanding loans" required>
+    </div>
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit" class="form-button">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>
