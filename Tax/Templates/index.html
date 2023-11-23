@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <!-- Add Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-qDO8bg3BYuF8e3ZE8/zvZkvm2IcgclYEVw2fs5D3rPq6PTM1JRd6tSuGCPWW7nuS++eHObLZtLzR5FpkCh4OJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background: linear-gradient(to right, #0f68a9, #86f7a4);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                color: black;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+	input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid black; /* Set border to 1px solid black */
+  color: black;
+	}
+
+
+        input[type="submit"] {
+            background: linear-gradient(to right, #0f68a9, #86f7a4);
+            color: black;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #0f68a9;
+                color: black;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .icons i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tax Calculator</h1>
+    <form action="/calculate_tax" method="post">
+        <label for="income">Income:</label>
+        <input type="number" name="income" required>
+        <br>
+        <label for="tax_rate">Tax Rate (%):</label>
+        <input type="number" name="tax_rate" required>
+        <br>
+        <input type="submit" value="Calculate Tax">
+    </form>
+
+    <!-- Sample icons and space for SVG image -->
+    <div class="icons">
+        <i class="fas fa-chart-pie"></i> <!-- Sample Font Awesome icon -->
+        <i class="fas fa-info-circle"></i> <!-- Sample Font Awesome icon -->
+        <!-- Add your SVG image here -->
+        <img src="path/to/your/image.svg" alt="Your SVG Image" style="width: 24px; height: 24px;">
+    </div>
+</body>
+
+</html>
