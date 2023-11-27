@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient1 {
+            background: linear-gradient(90deg, #0f68a9 0%, #86f7a4 100%);
+        }
+        .gradient2 {
+            background: linear-gradient(90deg, #86f7a4 0%, #0f68a9 100%);
+        }
+    </style>
+</head>
+<body class="gradient1 min-h-screen flex flex-col items-center justify-center m-4">
+    <img src="./emi-calculator-icon.jpg" alt="EMI Calculator" class="mx-auto mb-4 w-32 h-32 object-cover rounded-full" />
+    <div class="p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
+        <h1 class="text-2xl font-bold mb-4 text-center">EMI Calculator</h1>
+        <p class="text-sm mb-4 text-center text-gray-800">Calculate your Equated Monthly Installment (EMI) for home, car, and personal loans with ease. Enter the principal amount, interest rate, and loan period to get started.</p>
+        <form method="post" class="space-y-4">
+            <div>
+                <label for="principal" class="block text-black font-semibold">Principal Amount:</label>
+                <input type="number" step="any" name="principal" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <div>
+                <label for="rate" class="block  text-black font-semibold">Rate of Interest (%):</label>
+                <input type="number" step="any" name="rate" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <div>
+                <label for="time" class="block text-black font-semibold">Loan Period (in years):</label>
+                <input type="number" step="any" name="time" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <button type="submit" class="w-full gradient2 text-white font-bold py-2 px-4 rounded-md transition duration-300 hover:scale-105 transform cursor-pointer">Calculate EMI</button>
+        </form>
+        <!-- Results section (uncomment and style accordingly when needed) -->
+        <!-- {% if emi %}
+            <h2>Results:</h2>
+            <p>EMI: {{ emi }}</p>
+            <p>Total Amount Paid: {{ total_amount_paid }}</p>
+            <p>Total Interest Paid: {{ total_interest_paid }}</p>
+            <h2>Amortization Schedule:</h2>
+            <table class="min-w-full divide-y divide-gray-200 mt-4">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Principal Payment</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interest Payment</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remaining Principal</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for entry in amortization_schedule %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ entry.month }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ entry.principal_payment }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ entry.interest_payment }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ entry.remaining_principal }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %} -->
+    </div>
+</body>
+</html>
