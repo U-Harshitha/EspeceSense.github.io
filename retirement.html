@@ -18,7 +18,7 @@
     <div class="p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
         <h1 class="text-2xl font-bold mb-4 text-center">Retirement Calculator</h1>
         <p class="text-sm mb-4 text-center text-gray-800">Planning for retirement? Enter your current age and average monthly expenses to estimate the savings you'll need for retirement.</p>
-        <form action="/" method="post" class="space-y-4">
+        <form id="retirement-form" class="space-y-4">
             <div>
                 <label for="age" class="block text-black font-semibold">How old are you?</label>
                 <input type="number" name="age" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
@@ -27,16 +27,46 @@
                 <label for="monthly_expenses" class="block text-black font-semibold">How much do you spend per month?</label>
                 <input type="number" name="monthly_expenses" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
             </div>
-            <input type="submit" value="Calculate Retirement" class="w-full gradient2 text-white font-bold py-2 px-4 rounded-md transition duration-300 hover:scale-105 transform cursor-pointer">
+            <button type="button" onclick="calculateRetirement()" class="w-full gradient2 text-white font-bold py-2 px-4 rounded-md transition duration-300 hover:scale-105 transform cursor-pointer">Calculate Retirement</button>
         </form>
-        <!-- Result section (uncomment and style accordingly when needed) -->
-        <!-- {% if show_result %}
-            <h2>Result</h2>
-            <p>Age: {{ age }}</p>
-            <p>Monthly Expenses: ${{ monthly_expenses }}</p>
-            <p>Total Retirement Savings Needed: ${{ total_retirement_savings }}</p>
-            <p>Monthly Savings Required: ${{ monthly_savings }}</p>
-        {% endif %} -->
+
+        <!-- Result section -->
+        <div id="result-container" class="hidden mt-4">
+            <h2 class="text-lg font-semibold mb-2">Result</h2>
+            <p id="age-result" class="text-sm mb-2 text-gray-800"></p>
+            <p id="monthly-expenses-result" class="text-sm mb-2 text-gray-800"></p>
+            <p id="total-retirement-savings" class="text-sm mb-2 text-gray-800"></p>
+            <p id="monthly-savings-required" class="text-sm mb-2 text-gray-800"></p>
+        </div>
     </div>
+
+    <script>
+        function calculateRetirement() {
+            // Get user input
+            var age = parseInt(document.getElementsByName("age")[0].value);
+            var monthlyExpenses = parseFloat(document.getElementsByName("monthly_expenses")[0].value);
+
+            // Assume retirement age is 65
+            var retirementAge = 65;
+
+            // Calculate remaining years until retirement
+            var yearsUntilRetirement = retirementAge - age;
+
+            // Calculate total retirement savings needed
+            var totalRetirementSavings = monthlyExpenses * 12 * yearsUntilRetirement;
+
+            // Calculate monthly savings required
+            var monthlySavingsRequired = totalRetirementSavings / (yearsUntilRetirement * 12);
+
+            // Display results
+            document.getElementById("age-result").innerText = "Age: " + age;
+            document.getElementById("monthly-expenses-result").innerText = "Monthly Expenses: Rs." + monthlyExpenses.toFixed(2);
+            document.getElementById("total-retirement-savings").innerText = "Total Retirement Savings Needed: Rs." + totalRetirementSavings.toFixed(2);
+            document.getElementById("monthly-savings-required").innerText = "Monthly Savings Required: Rs." + monthlySavingsRequired.toFixed(2);
+
+            // Show the result container
+            document.getElementById("result-container").classList.remove("hidden");
+        }
+    </script>
 </body>
 </html>
