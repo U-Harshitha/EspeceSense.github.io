@@ -15,7 +15,7 @@
     </style>
 </head>
 <body class="gradient1 min-h-screen flex flex-col items-center justify-center m-4">
-    <img src="./testtax.jpg" alt="Tax Calculator" class="mx-auto mb-4 w-32  h-32 object-cover rounded-full" />
+    <img src="./WhatsApp Image 2023-11-27 at 00.08.18_3df60868.jpg" alt="Tax Calculator" class="mx-auto mb-4 w-32  h-32 object-cover rounded-full" />
     <div class="p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
         <h1 class="text-2xl font-bold mb-4 text-center">Tax Calculator</h1>
         <p class="text-sm mb-4 text-center text-gray-800">Enter your income and tax rate, and our calculator will determine the amount of tax you need to pay. This tool helps you estimate your taxes easily and quickly.</p>
@@ -38,6 +38,41 @@
             <p>Tax: ${{ tax }}</p>
         {% endif %} -->
     </div>
+    <div id="result-container" class="hidden p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
+        <!-- Result section -->
+        <h2 class="text-2xl font-bold mb-4 text-center">Result</h2>
+        <p id="income-result" class="text-sm mb-2 text-center text-gray-800"></p>
+        <p id="tax-rate-result" class="text-sm mb-2 text-center text-gray-800"></p>
+        <p id="tax-result" class="text-sm mb-4 text-center text-gray-800"></p>
+    </div>
+
+    <script>
+        // Function to calculate tax
+        function calculateTax() {
+            // Get user input
+            var income = parseFloat(document.getElementsByName("income")[0].value);
+            var taxRate = parseFloat(document.getElementsByName("tax_rate")[0].value);
+
+            // Calculate tax
+            var tax = (income * taxRate) / 100;
+
+            // Display result
+            document.getElementById("income-result").innerText = "Income: $" + income.toFixed(2);
+            document.getElementById("tax-rate-result").innerText = "Tax Rate: " + taxRate.toFixed(2) + "%";
+            document.getElementById("tax-result").innerText = "Tax: $" + tax.toFixed(2);
+
+            // Show the result container
+            document.getElementById("result-container").classList.remove("hidden");
+        }
+
+        // Add event listener to the form
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+            calculateTax(); // Call the calculateTax function
+        });
+    </script>
+</body>
+</html>
     
 </body>
 </html>
