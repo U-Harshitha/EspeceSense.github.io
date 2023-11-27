@@ -18,7 +18,7 @@
 <body class="gradient1 min-h-screen flex flex-col items-center justify-center m-4">
     <div class="p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
         <h1 class="text-2xl font-bold mb-4 text-center">GST Calculator</h1>
-        <form action="/" method="post" class="space-y-4">
+        <form id="gst-form" class="space-y-4">
             <div>
                 <label for="total_amount" class="block text-black font-semibold">Total Amount:</label>
                 <input type="number" name="total_amount" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
@@ -27,54 +27,82 @@
                 <label for="gst_slab" class="block text-black font-semibold">GST Slab (%):</label>
                 <input type="number" name="gst_slab" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
             </div>
-            <input type="submit" value="Calculate GST" class="w-full gradient2 text-white font-bold py-2 px-4 rounded-md transition duration-300 hover:scale-105 transform cursor-pointer">
+            <button type="button" onclick="calculateGST()" class="w-full gradient2 text-white font-bold py-2 px-4 rounded-md transition duration-300 hover:scale-105 transform cursor-pointer">Calculate GST</button>
         </form>
-        <!-- Result section (uncomment and style accordingly when needed) -->
-        <!-- {% if show_result %}
+
+        <!-- Result section -->
+        <div id="result-container" class="hidden mt-4">
             <h2 class="text-lg font-bold mt-4 text-center">Result</h2>
-            <p>Total Amount: ${{ total_amount }}</p>
-            <p>GST Slab: {{ gst_slab }}%</p>
-            <p>GST Amount: ${{ gst_amount }}</p>
-            <p>Amount Pre-GST: ${{ amount_pre_gst }}</p>
-            
+            <p id="total-amount"></p>
+            <p id="gst-slab"></p>
+            <p id="gst-amount"></p>
+            <p id="amount-pre-gst"></p>
+
             <!-- Chart.js Pie Chart for visualizing the data -->
             <canvas id="gstChart" width="400" height="200" class="p-4"></canvas>
-            
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-            <script>
-                var ctx = document.getElementById('gstChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['GST Amount', 'Amount Pre-GST'],
-                        datasets: [{
-                            data: [{{ gst_amount }}, {{ amount_pre_gst }}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.8)',
-                                'rgba(75, 192, 192, 0.8)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(75, 192, 192, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                            },
-                            title: {
-                                display: true,
-                                text: 'GST Breakdown'
-                            }
+        </div>
+    </div>
+
+    <script>
+        function calculateGST() {
+            // Get user input
+            var totalAmount = parseFloat(document.getElementsByName("total_amount")[0].value);
+            var gstSlab = parseFloat(document.getElementsByName("gst_slab")[0].value);
+
+            // Calculate GST amount
+            var gstAmount = (totalAmount * gstSlab) / 100;
+
+            // Calculate amount before GST
+            var amountPreGST = totalAmount - gstAmount;
+
+            // Display results
+            document.getElementById("total-amount").innerText = "Total Amount: $" + totalAmount.toFixed(2);
+            document.getElementById("gst-slab").innerText = "GST Slab: " + gstSlab + "%";
+            document.getElementById("gst-amount").innerText = "GST Amount: $" + gstAmount.toFixed(2);
+            document.getElementById("amount-pre-gst").innerText = "Amount Pre-GST: $" + amountPreGST.toFixed(2);
+
+            // Display Chart.js Pie Chart
+            displayChart(gstAmount, amountPreGST);
+
+            // Show the result container
+            document.getElementById("result-container").classList.remove("hidden");
+        }
+
+        function displayChart(gstAmount, amountPreGST) {
+            var ctx = document.getElementById('gstChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['GST Amount', 'Amount Pre-GST'],
+                    datasets: [{
+                        data: [gstAmount, amountPreGST],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(75, 192, 192, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'GST Breakdown'
                         }
                     }
-                });
-            </script>
-        {% endif %} -->
-    </div>
+                }
+            });
+        }
+    </script>
 </body>
 </html>
