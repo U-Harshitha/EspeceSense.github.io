@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient1 {
+            background: linear-gradient(90deg, #0f68a9 0%, #86f7a4 100%);
+        }
+        .gradient2 {
+            background: linear-gradient(90deg, #86f7a4 0%, #0f68a9 100%);
+        }
+    </style>
+</head>
+<body class="gradient1 min-h-screen flex flex-col items-center justify-center m-4">
+    <img src="./testtax.jpg" alt="Tax Calculator" class="mx-auto mb-4 w-32  h-32 object-cover rounded-full" />
+    <div class="p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
+        <h1 class="text-2xl font-bold mb-4 text-center">Tax Calculator</h1>
+        <p class="text-sm mb-4 text-center text-gray-800">Enter your income and tax rate, and our calculator will determine the amount of tax you need to pay. This tool helps you estimate your taxes easily and quickly.</p>
+        <form action="/" method="post" class="space-y-4">
+            <div>
+                <label for="income" class="block text-black font-semibold">Income:</label>
+                <input type="number" name="income" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <div>
+                <label for="tax_rate" class="block  text-black font-semibold">Tax Rate (%):</label>
+                <input type="number" name="tax_rate" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <input type="submit" value="Calculate Tax" class="w-full gradient2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 hover:scale-105 transform cursor-pointer">
+        </form>
+        <!-- Result section (uncomment and style accordingly when needed) -->
+        <!-- {% if show_result %}
+            <h2>Result</h2>
+            <p>Income: ${{ income }}</p>
+            <p>Tax Rate: {{ tax_rate }}%</p>
+            <p>Tax: ${{ tax }}</p>
+        {% endif %} -->
+    </div>
+    
+</body>
+</html>
