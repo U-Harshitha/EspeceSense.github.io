@@ -38,6 +38,41 @@
             <p>Tax: ${{ tax }}</p>
         {% endif %} -->
     </div>
+    <div id="result-container" class="hidden p-5 bg-white rounded-lg shadow-xl max-w-md w-full m-4">
+        <!-- Result section -->
+        <h2 class="text-2xl font-bold mb-4 text-center">Result</h2>
+        <p id="income-result" class="text-sm mb-2 text-center text-gray-800"></p>
+        <p id="tax-rate-result" class="text-sm mb-2 text-center text-gray-800"></p>
+        <p id="tax-result" class="text-sm mb-4 text-center text-gray-800"></p>
+    </div>
+
+    <script>
+        // Function to calculate tax
+        function calculateTax() {
+            // Get user input
+            var income = parseFloat(document.getElementsByName("income")[0].value);
+            var taxRate = parseFloat(document.getElementsByName("tax_rate")[0].value);
+
+            // Calculate tax
+            var tax = (income * taxRate) / 100;
+
+            // Display result
+            document.getElementById("income-result").innerText = "Income: $" + income.toFixed(2);
+            document.getElementById("tax-rate-result").innerText = "Tax Rate: " + taxRate.toFixed(2) + "%";
+            document.getElementById("tax-result").innerText = "Tax: $" + tax.toFixed(2);
+
+            // Show the result container
+            document.getElementById("result-container").classList.remove("hidden");
+        }
+
+        // Add event listener to the form
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+            calculateTax(); // Call the calculateTax function
+        });
+    </script>
+</body>
+</html>
     
 </body>
 </html>
